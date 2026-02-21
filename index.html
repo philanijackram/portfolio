@@ -1,459 +1,678 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Philani Jack Ram </title>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
-body {
-    font-family: 'Poppins', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f9f9f9;
-    color: #222;
-    text-align: center;
-}
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            color: #222;
+            text-align: center;
+        }
 
-header, footer {
-    background-color: #222;
-    color: white;
-    padding: 1rem 2rem;
-}
+        header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
 
-.header-container, .footer-container {
-    width: 100%;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 8px;
-}
+        header.hidden {
+            transform: translateY(-100%);
+        }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-    padding: 0;
-    margin: 0;
-}
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-}
+        .header-container,
+        .footer-container {
+            width: 100%;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
 
-main {
-    width: 100%;
-    padding: 2rem 1rem;
-}
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            padding: 0;
+            margin: 0;
+        }
 
-section {
-    margin-bottom: 3rem;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+        }
 
-h1, h2 {
-    margin: 0 0 0.5rem 0;
-}
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
 
-.horizontal-card-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    padding-bottom: 8px;
-}
+        main {
+            width: 100%;
+            padding: 2rem 1rem;
+        }
 
-.item-card {
-    width: 220px;
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 16px;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    background: white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    margin: 12px;
-    position: relative;
-    transition: all 0.2s ease-in-out;
-    overflow: hidden;
-}
+        section {
+            margin-bottom: 3rem;
+        }
 
-.item-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-}
+        h1,
+        h2 {
+            margin: 0 0 0.5rem 0;
+        }
 
-.item-title {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: black;
-    margin-bottom: 12px;
-    text-align: center;
-}
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
 
-.image-wrapper {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 1px solid #999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #eee;
-    flex-shrink: 0;
-}
+        section>p {
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
 
-.circular-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    aspect-ratio: 1 / 1;
-}
+        .horizontal-card-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            padding-bottom: 8px;
+        }
 
-.item-desc {
-    font-size: 12px;
-    color: #444;
-    margin-bottom: 8px;
-    text-align: center;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
+        .item-card {
+            width: 220px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin: 12px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
 
-.item-footer {
-    margin-top: auto;
-    width: 100%;
-    text-align: center;
-    padding-top: 12px;
-}
+        .item-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: #333;
+            cursor: pointer;
+        }
 
-.item-years {
-    font-size: 12px;
-    color: #888;
-}
+        .item-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: black;
+            margin-bottom: 12px;
+            text-align: center;
+        }
 
-/* === ABOUT SECTION === */
-.about_section {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 32px;
-    padding: 32px;
-    background-color: #f4f4f4;
-    font-family: 'Poppins', Arial, sans-serif;
-}
+        .image-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
 
-.profile_pic_area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 12px;
-    padding: 16px;
-}
+        .item-card:hover .image-wrapper {
+            transform: scale(1.1);
+        }
 
-.profile_pic {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+        .circular-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 1 / 1;
+        }
 
-.description_area {
-    max-width: 600px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
+        .item-desc {
+            font-size: 12px;
+            color: #444;
+            margin-bottom: 8px;
+            text-align: center;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
 
-.summary_area {
-    font-size: 16px;
-    color: #333;
-    white-space: pre-line;
-    line-height: 1.6;
-}
+        .item-footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding-top: 12px;
+        }
 
-.buttons_area {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-    margin-top: 16px;
-}
+        .item-years {
+            font-size: 12px;
+            color: #888;
+        }
 
-.buttons_area button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        /* === ABOUT SECTION === */
+        .about_section {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            padding: 48px 32px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            font-family: 'Poppins', Arial, sans-serif;
+            border-radius: 16px;
+            margin: 0 auto;
+            max-width: 1200px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
 
-.buttons_area button:hover {
-    background-color: #45a049;
-}
+        @media (max-width: 768px) {
+            .about_section {
+                flex-direction: column;
+            }
+        }
 
-/* === FOOTER SOCIAL ICONS === */
-.footer-container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    text-align: center;
-}
+        .profile_pic_area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+            padding: 16px;
+        }
 
-.footer-container a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    margin: 0 12px;
-    transition: color 0.3s ease-in-out;
-}
+        .profile_pic_area h2 {
+            margin: 8px 0 4px 0;
+        }
 
-.footer-container a:hover {
-    color: #4CAF50;
-}
+        .profile_pic_area p {
+            margin: 2px 0;
+            line-height: 1.4;
+        }
 
-/* Responsive tweaks for mobile */
-@media (max-width: 600px) {
-    .item-card {
-        width: 180px;
-        height: 300px;
-        padding: 12px;
-    }
+        .profile_pic {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border: 4px solid #333;
+            transition: transform 0.3s ease;
+        }
 
-    .image-wrapper {
-        width: 100px;
-        height: 100px;
-    }
+        .profile_pic:hover {
+            transform: scale(1.05);
+        }
 
-    .item-title {
-        font-size: 16px;
-    }
+        .description_area {
+            max-width: 600px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: left;
+        }
 
-    .item-desc {
-        font-size: 13px;
-    }
+        .summary_area {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.8;
+            text-align: justify;
+        }
 
-    .about_section {
-        flex-direction: column;
-        padding: 24px;
-    }
+        .summary_area p {
+            margin: 0;
+        }
 
-    .profile_pic {
-        width: 140px;
-        height: 140px;
-    }
+        .buttons_area {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
 
-    .description_area {
-        max-width: 90%;
-        padding: 12px;
-    }
+        .buttons_area button {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            color: white;
+            border: 2px solid transparent;
+            padding: 14px 28px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
 
-    .buttons_area {
-        flex-direction: column;
-        align-items: center;
-    }
+        .buttons_area button:hover {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            border-color: #666;
+        }
 
-    .buttons_area button {
-        width: 100%;
-    }
-}
+        /* === FOOTER SOCIAL ICONS === */
+        .footer-container {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            text-align: center;
+        }
 
-/* === NAV HIDE ON SCROLL === */
-.hide-on-scroll {
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-in-out;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 999;
-}</style>
+        .footer-container a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            margin: 0 12px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-container a:hover {
+            color: #ccc;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive tweaks for mobile */
+        @media (max-width: 600px) {
+            .item-card {
+                width: 180px;
+                height: 300px;
+                padding: 12px;
+            }
+
+            .image-wrapper {
+                width: 100px;
+                height: 100px;
+            }
+
+            .item-title {
+                font-size: 16px;
+            }
+
+            .item-desc {
+                font-size: 13px;
+            }
+
+            .about_section {
+                flex-direction: column;
+                padding: 24px;
+            }
+
+            .profile_pic {
+                width: 140px;
+                height: 140px;
+            }
+
+            .description_area {
+                max-width: 90%;
+                padding: 12px;
+            }
+
+            .buttons_area {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .buttons_area button {
+                width: 100%;
+            }
+        }
+
+        /* === NAV HIDE ON SCROLL === */
+        .hide-on-scroll {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 999;
+        }
+    </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  </head>
-  <body>
+</head>
+
+<body>
     <header>
-      <div class="header-container">
-        <h1>Philani Jack Ram</h1>
-        <nav>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#tech_stack">Tech Stack</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#projects">Projects</a></li>
-          </ul>
-        </nav>
-      </div>
+        <div class="header-container">
+            <h1>Philani Jack Ram</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#tech_stack">Tech Stack</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
-      <section id="about">
-        <section>
-          <div class="about_section">
-            <div class="profile_pic_area"><img alt="Profile Image" src="https://media.licdn.com/dms/image/v2/D4D03AQHK7heJP_IEZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1729506837705?e=2147483647&amp;v=beta&amp;t=HKdubSnbp7lh2pJjWHiQAwZVZ_36Q7JSzcr7NHcHdkY" class="profile_pic">
-              <h2>Full Stack Developer (Kotlin First)</h2>
-              <p>God ; Family ; Productivity</p>
-              <p>Love ; Peace ; Respect</p>
-            </div>
-            <div class="description_area">
-              <div class="summary_area">
-                <p>I am a passionate Software Engineer with a focus on Android mobile development. My top skills include Java, Kotlin, Jetpack Compose, ktor and MongoDB which I leverage to create efficient and scalable mobile applications. Committed to continuous personal and professional growth, I always strive to improve and take advantage of learning opportunities. I enjoy collaborating with others and approach problem-solving with a keen eye, influenced by my love for puzzles and my nature as an over-thinker. I hold a Computer Science and Information Technology degree from the University of KwaZulu-Natal.</p>
-              </div>
-              <div class="buttons_area"><button>
-                  <p>View Resume</p>
-                </button><button>
-                  <p>Download Resume</p>
-                </button></div>
-            </div>
-          </div>
+        <section id="about">
+            <section>
+                <div class="about_section">
+                    <div class="profile_pic_area"><img alt="Profile Image"
+                            src="https://media.licdn.com/dms/image/v2/D4D03AQHK7heJP_IEZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1729506837705?e=2147483647&amp;v=beta&amp;t=HKdubSnbp7lh2pJjWHiQAwZVZ_36Q7JSzcr7NHcHdkY"
+                            class="profile_pic">
+                        <h2>Mobile Developer</h2>
+                        <p>God ; Family ; Productivity</p>
+                        <p>Love ; Peace ; Respect</p>
+                    </div>
+                    <div class="description_area">
+                        <div class="summary_area">
+                            <p>I am a passionate Software Engineer with a focus on Android mobile development. My top
+                                skills include Java, Kotlin, Jetpack Compose, ktor and MongoDB which I leverage to
+                                create efficient and scalable mobile applications. Committed to continuous personal and
+                                professional growth, I always strive to improve and take advantage of learning
+                                opportunities. I enjoy collaborating with others and approach problem-solving with a
+                                keen eye, influenced by my love for puzzles and my nature as an over-thinker. I hold a
+                                Computer Science and Information Technology degree from the University of KwaZulu-Natal.
+                            </p>
+                        </div>
+                        <div class="buttons_area"><button>
+                                <p>View Resume</p>
+                            </button><button>
+                                <p>Download Resume</p>
+                            </button></div>
+                    </div>
+                </div>
+            </section>
         </section>
-      </section>
-      <section id="tech_stack">
-        <section>
-          <h2>Tech Stack</h2>
-          <p>This is my tech stack  my tools my weapons that i use to firght JK, This is the tech stack i use on a day to day basis </p>
-          <div class="horizontal-card-list">
-            <div class="item-card">
-              <h3 class="item-title">Java</h3>
-              <div class="image-wrapper"><img alt="Java image" src="https://img.icons8.com/?size=48&amp;id=13679&amp;format=png" class="circular-image"></div>
-              <p class="item-desc">I began my journey in Android development using Java, building foundational apps that focused on user authentication, CRUD operations, and networking. Java helped me grasp object-oriented programming, design patterns, and the Android SDK before transitioning to more modern tools.</p>
-              <div class="item-footer"><small class="item-years">2018 - present</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Kotlin</h3>
-              <div class="image-wrapper"><img alt="Kotlin image" src="https://us1.discourse-cdn.com/flex019/uploads/kotlinlang/original/2X/f/f440c5115af253e7b8dfdd241a45ccb8e494e8a6.png" class="circular-image"></div>
-              <p class="item-desc">Kotlin became my go-to for modern Android development, enabling me to build scalable, maintainable apps with Jetpack Compose, Coroutines, and Clean Architecture. I've used it across multi-module projects, integrated Hilt for dependency injection, and built backend services using Ktor.</p>
-              <div class="item-footer"><small class="item-years">2022 - present</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Jetpack Compose</h3>
-              <div class="image-wrapper"><img alt="Jetpack Compose image" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5wggXFTVLF0t58SuNrl4mii6x96w0CN3ef84eLfYUDImc4GBwxv-vWGufrmiDhSHXb6_9_PQz_sh8hdbt5oruCKFNxCl2QUdhzzUAZNNQVIiIZzXq58zkwtfohLsOAUqxArZ_XXYw-No/w1200-h630-p-k-no-nu/JetpackCompose_logo.png" class="circular-image"></div>
-              <p class="item-desc">Jetpack Compose became my go-to for Declarative UI development, enabling me to build beautiful, user friendly, maintainable apps with Jetpack Compose, Coroutines, and Clean Architecture. I've used it across multi-module projects, integrated Hilt for dependency injection, and built backend services using Ktor.</p>
-              <div class="item-footer"><small class="item-years">2022 - present</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Ktor</h3>
-              <div class="image-wrapper"><img alt="Ktor image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6M8qxB15mZUDJayER5jfRPjzFPAAw9eecxQ&amp;s" class="circular-image"></div>
-              <p class="item-desc">Ktor became my go-to for Back-end development, enabling me to build scalable, maintainable apps with Coroutine. I've used it across multi-module projects.</p>
-              <div class="item-footer"><small class="item-years">2025 - present</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Swift</h3>
-              <div class="image-wrapper"><img alt="Swift image" src="https://img.icons8.com/?size=512&amp;id=24465&amp;format=png" class="circular-image"></div>
-              <p class="item-desc">Swift is the newest tool in my stack. I’ve started building native iOS apps using SwiftUI with MVVM architecture. My focus has been on mastering view composition, data flow with Combine, and implementing reusable components that match the clean, declarative nature of SwiftUI.</p>
-              <div class="item-footer"><small class="item-years">2025 - present</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">SwiftUI</h3>
-              <div class="image-wrapper"><img alt="SwiftUI image" src="https://miro.medium.com/v2/resize:fit:1200/0*k7xq4F7IcIR-BabP.png" class="circular-image"></div>
-              <p class="item-desc">SwiftUI is the newest tool in my stack. I’ve started building native iOS apps using SwiftUI with MVVM architecture. My focus has been on mastering view composition, data flow with Combine, and implementing reusable components that match the clean, declarative nature of SwiftUI.</p>
-              <div class="item-footer"><small class="item-years">2025 - present</small></div>
-            </div>
-          </div>
+        <section id="tech_stack">
+            <section>
+                <h2>Tech Stack</h2>
+                <p>
+                    This is the tech stack I use on a day-to-day basis — the tools and technologies I rely on to design,
+                    build,
+                    and maintain high-quality software solutions.
+                </p>
+                <div class="horizontal-card-list">
+                    <div class="item-card">
+                        <h3 class="item-title">Java</h3>
+                        <div class="image-wrapper"><img alt="Java image"
+                                src="https://img.icons8.com/?size=48&amp;id=13679&amp;format=png"
+                                class="circular-image"></div>
+                        <p class="item-desc">I began my Android development journey using Java, building foundational
+                            applications focused on user
+                            authentication, CRUD operations, and network communication. Java helped me develop a strong
+                            understanding
+                            of object-oriented programming, design patterns, and the Android SDK before transitioning to
+                            more modern tools.</p>
+                        <div class="item-footer"><small class="item-years">2018 - present</small></div>
+                    </div>
+                    <div class="item-card">
+                        <h3 class="item-title">Kotlin</h3>
+                        <div class="image-wrapper"><img alt="Kotlin image"
+                                src="https://us1.discourse-cdn.com/flex019/uploads/kotlinlang/original/2X/f/f440c5115af253e7b8dfdd241a45ccb8e494e8a6.png"
+                                class="circular-image"></div>
+                        <p class="item-desc"> Kotlin became my primary language for modern Android development, enabling
+                            me to build scalable and
+                            maintainable applications using Jetpack Compose, Coroutines, and Clean Architecture. I’ve
+                            applied it across
+                            multi-module projects, integrated Hilt for dependency injection, and developed backend
+                            services using Ktor.</p>
+                        <div class="item-footer"><small class="item-years">2022 - present</small></div>
+                    </div>
+                    <div class="item-card">
+                        <h3 class="item-title">Jetpack Compose</h3>
+                        <div class="image-wrapper"><img alt="Jetpack Compose image"
+                                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh5wggXFTVLF0t58SuNrl4mii6x96w0CN3ef84eLfYUDImc4GBwxv-vWGufrmiDhSHXb6_9_PQz_sh8hdbt5oruCKFNxCl2QUdhzzUAZNNQVIiIZzXq58zkwtfohLsOAUqxArZ_XXYw-No/w1200-h630-p-k-no-nu/JetpackCompose_logo.png"
+                                class="circular-image"></div>
+                        <p class="item-desc">Jetpack Compose is my preferred framework for declarative UI development.
+                            It allows me to build clean,
+                            user-friendly, and maintainable interfaces while working seamlessly with Coroutines and
+                            Clean Architecture
+                            across multi-module projects.</p>
+                        <div class="item-footer"><small class="item-years">2022 - present</small></div>
+                    </div>
+                    <div class="item-card">
+                        <h3 class="item-title">Ktor</h3>
+                        <div class="image-wrapper"><img alt="Ktor image"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6M8qxB15mZUDJayER5jfRPjzFPAAw9eecxQ&amp;s"
+                                class="circular-image"></div>
+                        <p class="item-desc">Ktor is my backend framework of choice for building lightweight, scalable
+                            services using Kotlin and
+                            coroutines. I’ve used it to design APIs that integrate cleanly with mobile applications.</p>
+                        <div class="item-footer"><small class="item-years">2025 - present</small></div>
+                    </div>
+                    <div class="item-card">
+                        <h3 class="item-title">Swift</h3>
+                        <div class="image-wrapper"><img alt="Swift image"
+                                src="https://img.icons8.com/?size=512&amp;id=24465&amp;format=png"
+                                class="circular-image"></div>
+                        <p class="item-desc"> Swift is the newest addition to my skill set. I’ve been building native
+                            iOS applications using SwiftUI
+                            and MVVM architecture, focusing on clean view composition, data flow with Combine, and
+                            reusable components.</p>
+                        <div class="item-footer"><small class="item-years">2025 - present</small></div>
+                    </div>
+                    <div class="item-card">
+                        <h3 class="item-title">SwiftUI</h3>
+                        <div class="image-wrapper"><img alt="SwiftUI image"
+                                src="https://miro.medium.com/v2/resize:fit:1200/0*k7xq4F7IcIR-BabP.png"
+                                class="circular-image"></div>
+                        <p class="item-desc">SwiftUI allows me to build modern, declarative user interfaces for iOS
+                            applications. My focus has been on
+                            mastering layout composition, state management, and creating maintainable UI components that
+                            scale well.</p>
+                        <div class="item-footer"><small class="item-years">2025 - present</small></div>
+                    </div>
+                </div>
+            </section>
         </section>
-      </section>
-      <section id="experience">
-        <section>
-          <h2>Experience</h2>
-          <p>I have 4,5 + years of experience I started my career in 2021 in the e-commerce sector the moved my way to the courier industry</p>
-          <div class="horizontal-card-list">
-            <div class="item-card">
-              <h3 class="item-title">Superbalist.com</h3>
-              <div class="image-wrapper"><img alt="Superbalist.com image" src="https://play-lh.googleusercontent.com/5aqeSykIMQNDb_cSqI8MseEH_D0pvxTjV4x8ORxZrJXNQ-nNcSpVdrmvmqCQvaK24rw" class="circular-image"></div>
-              <p class="item-desc">Worked as a mobile developer building Android apps with Java, Kotlin, and XML. Focused on UI development, API integration, and performance optimization.</p>
-              <div class="item-footer"><small class="item-years">2021 - 2024</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Droppa.co.za</h3>
-              <div class="image-wrapper"><img alt="Droppa.co.za image" src="https://media.licdn.com/dms/image/v2/C4D0BAQHDdz2HrYoA9g/company-logo_200_200/company-logo_200_200/0/1657091523396/droppa_south_africa_logo?e=2147483647&amp;v=beta&amp;t=PnASXESTY4zHxruWJZnXO2tE6gv9G_f0N_-YgxwD7cI" class="circular-image"></div>
-              <p class="item-desc">Developed Android features using Kotlin and Java. Implemented offline-first data handling, location tracking,Firebase .</p>
-              <div class="item-footer"><small class="item-years">2025 - Present</small></div>
-            </div>
-          </div>
+        <section id="experience">
+            <section>
+                <h2>Experience</h2>
+                <p>I have 5 years of professional experience. I began my career in the e-commerce sector and later
+                    transitioned into the logistics and courier industry, working on scalable, production-grade mobile
+                    applications.</p>
+                <div class="horizontal-card-list">
+                    <div class="item-card">
+                        <h3 class="item-title">Superbalist.com</h3>
+                        <div class="image-wrapper"><img alt="Superbalist.com image"
+                                src="https://play-lh.googleusercontent.com/5aqeSykIMQNDb_cSqI8MseEH_D0pvxTjV4x8ORxZrJXNQ-nNcSpVdrmvmqCQvaK24rw"
+                                class="circular-image"></div>
+                        <p class="item-desc">Worked as a mobile developer building Android applications using Java,
+                            Kotlin, and XML. Focused on UI
+                            development, API integration, performance optimization, and maintaining large-scale
+                            production apps.</p>
+                        <div class="item-footer"><small class="item-years">2021 - 2024</small></div>
+                    </div>
+                    <div class="item-card">
+                        <h3 class="item-title">Droppa.co.za</h3>
+                        <div class="image-wrapper"><img alt="Droppa.co.za image"
+                                src="https://media.licdn.com/dms/image/v2/C4D0BAQHDdz2HrYoA9g/company-logo_200_200/company-logo_200_200/0/1657091523396/droppa_south_africa_logo?e=2147483647&amp;v=beta&amp;t=PnASXESTY4zHxruWJZnXO2tE6gv9G_f0N_-YgxwD7cI"
+                                class="circular-image"></div>
+                        <p class="item-desc"> Developed Android features using Kotlin and Java, with a strong focus on
+                            offline-first data handling,
+                            location tracking, and Firebase integrations.</p>
+                        <div class="item-footer"><small class="item-years">2025 - Present</small></div>
+                    </div>
+                </div>
+            </section>
         </section>
-      </section>
-      <section id="education">
-        <section>
-          <h2>Education History</h2>
-          <p>Well they told me that Education is the key to success, I just knew i had to get that key now the only issue is the door which iam still looking for</p>
-          <div class="horizontal-card-list">
-            <div class="item-card">
-              <h3 class="item-title">University of KwaZulu-Natal</h3>
-              <div class="image-wrapper"><img alt="University of KwaZulu-Natal image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE7GztErGP-LGygwR6f9bb7Z74m5gGne_aFg&amp;s" class="circular-image"></div>
-              <p class="item-desc">Degree, Learned alot but the important thingis the Degree that i got there a Degree</p>
-              <div class="item-footer"><small class="item-years">2017 - 2020</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Copesville Secondary School</h3>
-              <div class="image-wrapper"><img alt="Copesville Secondary School image" src="https://images.caxton.co.za/wp-content/uploads/sites/144/2024/03/copesville-school.jpg" class="circular-image"></div>
-              <p class="item-desc">Matriculated, Ask anyone at my School they'll tell you I was numero UNO.</p>
-              <div class="item-footer"><small class="item-years">2012 - 2016</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Copesville Primary School</h3>
-              <div class="image-wrapper"><img alt="Copesville Primary School image" src="https://www.sunshineseedlings.co.za/wp-content/uploads/2020/07/toilet-donations-1-1-1030x580.jpg" class="circular-image"></div>
-              <p class="item-desc">Primary Levels not much to say here but hey did get a few awards here and there especially in mathematics</p>
-              <div class="item-footer"><small class="item-years">2006 - 2011</small></div>
-            </div>
-          </div>
+        <section id="education">
+            <section>
+                <h2>Education History</h2>
+                <p> Education laid the foundation for my problem-solving mindset and technical growth. Each stage played
+                    a role
+                    in shaping my analytical thinking and work ethic.</p>
+                <div class="horizontal-card-list">
+
+                    <div class="item-card">
+                        <h3 class="item-title">Copesville Primary School</h3>
+                        <div class="image-wrapper"><img alt="Copesville Primary School image"
+                                src="https://www.sunshineseedlings.co.za/wp-content/uploads/2020/07/toilet-donations-1-1-1030x580.jpg"
+                                class="circular-image"></div>
+                        <p class="item-desc">Completed primary education, earning several academic awards along the way,
+                            particularly in mathematics.</p>
+                        <div class="item-footer"><small class="item-years">2006 - 2011</small></div>
+                    </div>
+
+                    <div class="item-card">
+                        <h3 class="item-title">Copesville Secondary School</h3>
+                        <div class="image-wrapper"><img alt="Copesville Secondary School image"
+                                src="https://images.caxton.co.za/wp-content/uploads/sites/144/2024/03/copesville-school.jpg"
+                                class="circular-image"></div>
+                        <p class="item-desc"> Completed matric, consistently performing at a high academic level
+                            throughout my secondary education.
+                        </p>
+                        <div class="item-footer"><small class="item-years">2012 - 2016</small></div>
+                    </div>
+
+                    <div class="item-card">
+                        <h3 class="item-title">University of KwaZulu-Natal</h3>
+                        <div class="image-wrapper"><img alt="University of KwaZulu-Natal image"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE7GztErGP-LGygwR6f9bb7Z74m5gGne_aFg&amp;s"
+                                class="circular-image"></div>
+                        <p class="item-desc">Earned a degree in Computer Science and Information Technology, gaining
+                            strong theoretical and practical
+                            foundations in software development.</p>
+                        <div class="item-footer"><small class="item-years">2017 - 2020</small></div>
+                    </div>
+                </div>
+            </section>
         </section>
-      </section>
-      <section id="projects">
-        <section>
-          <h2>Projects</h2>
-          <p>These are the projects that I have invested my time, Energy and some money, and so far so good.</p>
-          <div class="horizontal-card-list">
-            <div class="item-card">
-              <h3 class="item-title">Mi-Kasi (Mobile)</h3>
-              <div class="image-wrapper"><img alt="Mi-Kasi (Mobile) image" src="https://mi-kasi-app.s3.eu-north-1.amazonaws.com/images/mi_kasi_logo-playstore.png" class="circular-image"></div>
-              <p class="item-desc">Mobile Application(GMS, HMS, iOS) for the Mi-Kasi Platform allowing users to have access to cool things</p>
-              <div class="item-footer"><small class="item-years">2025 - Present</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Mi-Kasi (Back-End)</h3>
-              <div class="image-wrapper"><img alt="Mi-Kasi (Back-End) image" src="https://mi-kasi-app.s3.eu-north-1.amazonaws.com/images/mi_kasi_logo-playstore.png" class="circular-image"></div>
-              <p class="item-desc">Back-End for the Mi-Kasi Platform allowing users to have access to cool things</p>
-              <div class="item-footer"><small class="item-years">2025 - Present</small></div>
-            </div>
-            <div class="item-card">
-              <h3 class="item-title">Mi-Kasi (Website)</h3>
-              <div class="image-wrapper"><img alt="Mi-Kasi (Website) image" src="https://mi-kasi-app.s3.eu-north-1.amazonaws.com/images/mi_kasi_logo-playstore.png" class="circular-image"></div>
-              <p class="item-desc">Website for the Mi-Kasi Platform allowing users to have access to cool things</p>
-              <div class="item-footer"><small class="item-years">2025 - Present</small></div>
-            </div>
-          </div>
+        <section id="projects">
+            <section>
+                <h2>Projects</h2>
+                <p>These are projects I’ve invested significant time, energy, and effort into — each contributing to my
+                    growth as a developer and problem solver.</p>
+                <div class="horizontal-card-list">
+                    <div class="item-card">
+                        <h3 class="item-title">Mi-Kasi (Mobile)</h3>
+                        <div class="image-wrapper"><img alt="Mi-Kasi (Mobile) image"
+                                src="https://mi-kasi-app.s3.eu-north-1.amazonaws.com/images/mi_kasi_logo-playstore.png"
+                                class="circular-image"></div>
+                        <p class="item-desc">A cross-platform mobile application (GMS, HMS, and iOS) for the Mi-Kasi
+                            platform, providing users access
+                            to a range of digital services.</p>
+                        <div class="item-footer"><small class="item-years">2025 - Present</small></div>
+                    </div>
+                    <div class="item-card">
+                        <h3 class="item-title">Mi-Kasi (Back-End)</h3>
+                        <div class="image-wrapper"><img alt="Mi-Kasi (Back-End) image"
+                                src="https://mi-kasi-app.s3.eu-north-1.amazonaws.com/images/mi_kasi_logo-playstore.png"
+                                class="circular-image"></div>
+                        <p class="item-desc"> Backend services powering the Mi-Kasi platform, designed to support
+                            scalable features and seamless
+                            integration with mobile and web clients.</p>
+                        <div class="item-footer"><small class="item-years">2025 - Present</small></div>
+                    </div>
+                    <div class="item-card">
+                        <h3 class="item-title">Mi-Kasi (Website)</h3>
+                        <div class="image-wrapper"><img alt="Mi-Kasi (Website) image"
+                                src="https://mi-kasi-app.s3.eu-north-1.amazonaws.com/images/mi_kasi_logo-playstore.png"
+                                class="circular-image"></div>
+                        <p class="item-desc">A responsive website for the Mi-Kasi platform, built to provide users with
+                            accessible information and
+                            platform features.</p>
+                        <div class="item-footer"><small class="item-years">2025 - Present</small></div>
+                    </div>
+                </div>
+            </section>
         </section>
-      </section>
-      <section id="contact"></section>
+        <section id="contact"></section>
     </main>
     <footer>
-      <div class="footer-container" style="display: flex;
+        <div class="footer-container" style="display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
 gap: 12px;
 padding: 1rem;
-color: white;">© 2025 Philani Jack Ram - All rights reserved.
-        <div style="display: flex; gap: 24px; font-size: 24px;"><a href="https://facebook.com/yourprofile" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i><span class="sr-only">Facebook</span></a><a href="https://twitter.com/yourprofile" target="_blank" rel="noopener"><i class="fab fa-twitter"></i><span class="sr-only">X (Twitter)</span></a><a href="https://wa.me/yournumber" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><span class="sr-only">WhatsApp</span></a><a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i><span class="sr-only">LinkedIn</span></a><a href="mailto:youremail@gmail.com"><i class="fas fa-envelope"></i><span class="sr-only">Gmail</span></a><a href="https://www.threads.net/@yourprofile" target="_blank" rel="noopener"><i class="fas fa-hashtag"></i><span class="sr-only">Threads</span></a><a href="https://github.com/yourprofile" target="_blank" rel="noopener"><i class="fab fa-github"></i><span class="sr-only">GitHub</span></a><a href="https://instagram.com/yourprofile" target="_blank" rel="noopener"><i class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a><a href="https://youtube.com/yourchannel" target="_blank" rel="noopener"><i class="fab fa-youtube"></i><span class="sr-only">YouTube</span></a><a href="https://t.me/yourprofile" target="_blank" rel="noopener"><i class="fab fa-telegram"></i><span class="sr-only">Telegram</span></a></div>
-      </div>
+color: white;">
+            <div style="display: flex; gap: 24px; font-size: 24px;"><a href="https://facebook.com/yourprofile"
+                    target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i><span
+                        class="sr-only">Facebook</span></a><a href="https://twitter.com/yourprofile" target="_blank"
+                    rel="noopener"><i class="fab fa-twitter"></i><span class="sr-only">X (Twitter)</span></a><a
+                    href="https://wa.me/yournumber" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><span
+                        class="sr-only">WhatsApp</span></a><a href="https://linkedin.com/in/yourprofile" target="_blank"
+                    rel="noopener"><i class="fab fa-linkedin-in"></i><span class="sr-only">LinkedIn</span></a><a
+                    href="mailto:youremail@gmail.com"><i class="fas fa-envelope"></i><span
+                        class="sr-only">Gmail</span></a><a href="https://www.threads.net/@yourprofile" target="_blank"
+                    rel="noopener"><i class="fas fa-hashtag"></i><span class="sr-only">Threads</span></a><a
+                    href="https://github.com/yourprofile" target="_blank" rel="noopener"><i
+                        class="fab fa-github"></i><span class="sr-only">GitHub</span></a><a
+                    href="https://instagram.com/yourprofile" target="_blank" rel="noopener"><i
+                        class="fab fa-instagram"></i><span class="sr-only">Instagram</span></a><a
+                    href="https://youtube.com/yourchannel" target="_blank" rel="noopener"><i
+                        class="fab fa-youtube"></i><span class="sr-only">YouTube</span></a><a
+                    href="https://t.me/yourprofile" target="_blank" rel="noopener"><i class="fab fa-telegram"></i><span
+                        class="sr-only">Telegram</span></a></div>
+        </div>
     </footer>
-  </body>
+    
+    <script>
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const scrollThreshold = 100;
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > scrollThreshold) {
+                if (scrollTop > lastScrollTop) {
+                    // Scrolling down
+                    header.classList.add('hidden');
+                } else {
+                    // Scrolling up
+                    header.classList.remove('hidden');
+                }
+            } else {
+                // At the top of the page
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+
 </html>
