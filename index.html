@@ -83,6 +83,15 @@
             margin-bottom: 3rem;
         }
 
+        section > section {
+            padding: 48px 32px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            border-radius: 16px;
+            margin: 0 auto 3rem;
+            max-width: 1200px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
         h1,
         h2 {
             margin: 0 0 0.5rem 0;
@@ -279,23 +288,50 @@
         }
 
         .buttons_area button {
-            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #2d2d2d 0%, #000000 100%);
             color: white;
-            border: 2px solid transparent;
-            padding: 14px 28px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 8px;
+            border: 2px solid #333;
+            padding: 12px 36px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 100px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            min-width: 180px;
+        }
+
+        .buttons_area button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .buttons_area button:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .buttons_area button:hover {
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
             border-color: #666;
+        }
+
+        .buttons_area button:active {
+            transform: translateY(-2px) scale(1.02);
         }
 
         /* === FOOTER SOCIAL ICONS === */
@@ -396,34 +432,32 @@
     </header>
     <main>
         <section id="about">
-            <section>
-                <div class="about_section">
-                    <div class="profile_pic_area"><img alt="Profile Image"
-                            src="https://media.licdn.com/dms/image/v2/D4D03AQHK7heJP_IEZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1729506837705?e=2147483647&amp;v=beta&amp;t=HKdubSnbp7lh2pJjWHiQAwZVZ_36Q7JSzcr7NHcHdkY"
-                            class="profile_pic">
-                        <h2>Mobile Developer</h2>
-                        <p>God ; Family ; Productivity</p>
-                        <p>Love ; Peace ; Respect</p>
-                    </div>
-                    <div class="description_area">
-                        <div class="summary_area">
-                            <p>I am a passionate Software Engineer with a focus on Android mobile development. My top
-                                skills include Java, Kotlin, Jetpack Compose, ktor and MongoDB which I leverage to
-                                create efficient and scalable mobile applications. Committed to continuous personal and
-                                professional growth, I always strive to improve and take advantage of learning
-                                opportunities. I enjoy collaborating with others and approach problem-solving with a
-                                keen eye, influenced by my love for puzzles and my nature as an over-thinker. I hold a
-                                Computer Science and Information Technology degree from the University of KwaZulu-Natal.
-                            </p>
-                        </div>
-                        <div class="buttons_area"><button>
-                                <p>View Resume</p>
-                            </button><button>
-                                <p>Download Resume</p>
-                            </button></div>
-                    </div>
+            <div class="about_section">
+                <div class="profile_pic_area"><img alt="Profile Image"
+                        src="https://media.licdn.com/dms/image/v2/D4D03AQHK7heJP_IEZA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1729506837705?e=2147483647&amp;v=beta&amp;t=HKdubSnbp7lh2pJjWHiQAwZVZ_36Q7JSzcr7NHcHdkY"
+                        class="profile_pic">
+                    <h2>Mobile Developer</h2>
+                    <p>God ; Family ; Productivity</p>
+                    <p>Love ; Peace ; Respect</p>
                 </div>
-            </section>
+                <div class="description_area">
+                    <div class="summary_area">
+                        <p>I am a passionate Software Engineer with a focus on Android mobile development. My top
+                            skills include Java, Kotlin, Jetpack Compose, ktor and MongoDB which I leverage to
+                            create efficient and scalable mobile applications. Committed to continuous personal and
+                            professional growth, I always strive to improve and take advantage of learning
+                            opportunities. I enjoy collaborating with others and approach problem-solving with a
+                            keen eye, influenced by my love for puzzles and my nature as an over-thinker. I hold a
+                            Computer Science and Information Technology degree from the University of KwaZulu-Natal.
+                        </p>
+                    </div>
+                    <div class="buttons_area"><button>
+                            <p>View Resume</p>
+                        </button><button>
+                            <p>Download Resume</p>
+                        </button></div>
+                </div>
+            </div>
         </section>
         <section id="tech_stack">
             <section>
